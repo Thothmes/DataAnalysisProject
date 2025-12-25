@@ -35,12 +35,13 @@ def validate_bays(bays, names):
             print("Такого человека нет")
             return False
         
-        if not (bay_num_i[1].isdigit()):
+        try:
+            price = float(bay_num_i[1])
+            if price <= 0:
+                print("Сумма покупки не может быть отрицательной или 0")
+                return False
+        except ValueError:
             print("На месте покупки указано не число")
-            return False
-        
-        if int(bay_num_i[1]) < 1:
-            print("Сумма покупки не может быть отрицательной или 0")
             return False
     
     return True
